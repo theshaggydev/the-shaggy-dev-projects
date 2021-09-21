@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://barrel.png" type="Texture" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="barrel" type="Sprite" parent="."]
+position = Vector2( 310, 170 )
+scale = Vector2( 9.375, 9.375 )
+texture = ExtResource( 1 )
