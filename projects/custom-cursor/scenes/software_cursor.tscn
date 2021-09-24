@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://cursor/cursor.png" type="Texture" id=1]
+[ext_resource path="res://scenes/software_cursor.gd" type="Script" id=2]
+
+[node name="software_cursor" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="cursor" type="Sprite" parent="."]
+position = Vector2( 449, 273 )
+texture = ExtResource( 1 )

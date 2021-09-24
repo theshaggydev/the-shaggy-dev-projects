@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/update_cursor_with_screen_size.gd" type="Script" id=1]
+
+[node name="update_cursor_with_screen_size" type="Node2D"]
+script = ExtResource( 1 )

@@ -1,0 +1,28 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+[application]
+
+config/name="custom-cursor"
+config/icon="res://icon.png"
+
+[display]
+
+mouse_cursor/custom_image="res://cursor/cursor.png"
+mouse_cursor/custom_image_hotspot=Vector2( 16, 16 )
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_clear_color=Color( 0.0431373, 0.133333, 0.192157, 1 )
+environment/default_environment="res://default_env.tres"
