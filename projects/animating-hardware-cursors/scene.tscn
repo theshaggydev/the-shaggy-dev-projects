@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scene.gd" type="Script" id=1]
+
+[node name="scene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="trigger_button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -107.0
+margin_top = -20.0
+margin_right = 108.0
+margin_bottom = 20.0
+text = "Click me to begin animation"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -310.0
+margin_top = 94.5
+margin_right = 310.0
+margin_bottom = 161.5
+text = "Enter some text here"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="animation_timer" type="Timer" parent="."]
