@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/ground.png" type="Texture" id=1]
+
+[node name="polygon2d_sample_scene" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 0.568627, 0.823529, 0.87451, 1 )
+antialiased = true
+texture = ExtResource( 1 )
+polygon = PoolVector2Array( 696.113, 90.3212, 569.605, 95.6666, 435.97, 133.084, 307.68, 224.847, 246.208, 386.991, 283.626, 514.39, 386.97, 612.389, 613.259, 661.388, 778.967, 675.643, 933.092, 621.298, 940.22, 550.026, 829.748, 468.954, 659.586, 448.463, 527.733, 430.645, 444.879, 311.264, 497.442, 206.138, 729.967, 196.338 )

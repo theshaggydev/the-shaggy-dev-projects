@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/polygon_static_body.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/polygon_rigid_body.tscn" type="PackedScene" id=3]
+
+[node name="test_scene" type="Node2D"]
+
+[node name="ball" parent="." instance=ExtResource( 2 )]
+position = Vector2( 213, 102 )
+
+[node name="polygon_static_body" parent="." instance=ExtResource( 1 )]
+polygon = PoolVector2Array( 46, 468, 151, 554, 350, 640, 499, 637, 715.043, 644.64, 766, 596, 1058, 649, 1185, 569, 1246, 436, 1299, 434, 1313, 731, -15, 740, -17, 463 )
+
+[node name="polygon_rigid_body" parent="." instance=ExtResource( 3 )]
+
+[node name="Polygon2D" parent="polygon_rigid_body" index="0"]
+polygon = PoolVector2Array( 799.24, 326.164, 715.235, 326.164, 750.158, 283.689, 765.26, 256.317, 756.765, 223.281, 791.689, 191.19 )
+
+[editable path="polygon_rigid_body"]
