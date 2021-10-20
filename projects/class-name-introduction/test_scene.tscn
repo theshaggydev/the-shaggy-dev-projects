@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/ball/ball.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/hole/hole.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/ground/ground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/block/block.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/ball/blue_ball.tscn" type="PackedScene" id=5]
+
+[node name="test_scene" type="Node2D"]
+
+[node name="ground" parent="." instance=ExtResource( 3 )]
+
+[node name="hole" parent="." instance=ExtResource( 2 )]
+position = Vector2( 512, 832 )
+
+[node name="hole2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1344, 880 )
+
+[node name="ball" parent="." instance=ExtResource( 1 )]
+position = Vector2( 512, 128 )
+
+[node name="block" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1344, 312 )
+
+[node name="blue_ball" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1344, 112 )
