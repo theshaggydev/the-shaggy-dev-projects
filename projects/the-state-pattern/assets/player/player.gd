@@ -8,11 +8,9 @@ onready var animations = $animations
 onready var states = $state_manager
 
 func _ready() -> void:
-	# Pass a reference of the player to the states, that way they can move
-	# and react accordingly
-	states.set_refs(self)
-	# Initialize with a default state of idle
-	states.change_state(BaseState.State.Idle)
+	# Initialize the state machine, passing a reference of the player to the states,
+	# that way they can move and react accordingly
+	states.init(self)
 
 func _unhandled_input(event: InputEvent) -> void:
 	states.input(event)

@@ -48,15 +48,15 @@ region = Rect2( 128, 0, 16, 16 )
 atlas = ExtResource( 1 )
 region = Rect2( 144, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
 region = Rect2( 176, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 1 )
 region = Rect2( 160, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=12]
+[sub_resource type="SpriteFrames" id=14]
 animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
@@ -68,12 +68,12 @@ animations = [ {
 "name": "walk",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 13 ) ],
+"frames": [ SubResource( 12 ) ],
 "loop": true,
 "name": "fall",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 14 ) ],
+"frames": [ SubResource( 13 ) ],
 "loop": true,
 "name": "jump",
 "speed": 5.0
@@ -86,7 +86,7 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="animations" type="AnimatedSprite" parent="."]
-frames = SubResource( 12 )
+frames = SubResource( 14 )
 animation = "idle"
 playing = true
 

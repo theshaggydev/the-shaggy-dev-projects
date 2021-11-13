@@ -13,9 +13,7 @@ enum State {
 
 export (String) var animation_name
 
-# Due to cyclic dependencies, we can't type our player variable here
-# So just remember that this is a reference to the entire player node
-var player
+var player: Player
 
 func enter() -> void:
 	player.animations.play(animation_name)
