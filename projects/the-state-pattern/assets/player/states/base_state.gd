@@ -13,6 +13,7 @@ enum State {
 
 export (String) var animation_name
 
+# Pass in a reference to the player's kinematic body so that it can be used by the state
 var player: Player
 
 func enter() -> void:
@@ -28,6 +29,5 @@ func input(event: InputEvent) -> int:
 func process(delta: float) -> int:
 	return State.Null
 
-# Pass in a reference to the player's kinematic body so that it can be moved by the state
 func physics_process(delta: float) -> int:
 	return State.Null
