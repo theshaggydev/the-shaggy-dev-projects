@@ -1,0 +1,30 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+[application]
+
+config/name="line2d-physics"
+run/main_scene="res://test_scene.tscn"
+config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/size/fullscreen=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_clear_color=Color( 0.188235, 0.152941, 0.266667, 1 )
+environment/default_environment="res://default_env.tres"

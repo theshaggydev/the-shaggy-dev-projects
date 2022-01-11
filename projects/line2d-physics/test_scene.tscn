@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://physics_line/static_physics_line.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ball/ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://physics_line/rigid_physics_line.tscn" type="PackedScene" id=3]
+
+[node name="test_scene" type="Node2D"]
+
+[node name="ball" parent="." instance=ExtResource( 2 )]
+position = Vector2( 343, 71 )
+
+[node name="static_physics_line" parent="." instance=ExtResource( 1 )]
+points = PoolVector2Array( 106, 231, 255, 556, 631, 666, 989, 631, 1162, 402, 1081, 236, 878, 216, 696, 399, 635, 586 )
+
+[node name="rigid_physics_line" parent="." instance=ExtResource( 3 )]
+position = Vector2( 343, 71 )
+
+[node name="line" parent="rigid_physics_line" index="0"]
+points = PoolVector2Array( 165, 50, 139, 126, 282, 140, 278, 74 )
+
+[editable path="rigid_physics_line"]
