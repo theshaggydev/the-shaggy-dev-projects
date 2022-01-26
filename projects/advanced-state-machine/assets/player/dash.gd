@@ -11,11 +11,7 @@ func enter() -> void:
 	
 	current_dash_time = dash_time
 	
-	if Input.is_action_pressed("move_left"):
-		dash_direction = -1
-	elif Input.is_action_pressed("move_right"):
-		dash_direction = 1
-	elif player.animations.flip_h:
+	if player.animations.flip_h:
 		dash_direction = -1
 	else:
 		dash_direction = 1
