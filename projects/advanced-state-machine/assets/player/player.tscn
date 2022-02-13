@@ -1,0 +1,205 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://assets/player/animations.png" type="Texture" id=1]
+[ext_resource path="res://assets/player/player.gd" type="Script" id=2]
+[ext_resource path="res://assets/player/states/state_manager.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/player/states/idle.gd" type="Script" id=4]
+[ext_resource path="res://assets/player/states/jump.gd" type="Script" id=5]
+[ext_resource path="res://assets/player/states/run.gd" type="Script" id=6]
+[ext_resource path="res://assets/player/states/fall.gd" type="Script" id=7]
+[ext_resource path="res://assets/player/states/walk.gd" type="Script" id=8]
+[ext_resource path="res://assets/player/states/dash.gd" type="Script" id=9]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.0
+height = 8.0
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 176, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 1 )
+region = Rect2( 112, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 1 )
+region = Rect2( 144, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 1 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 1 )
+region = Rect2( 112, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 1 )
+region = Rect2( 144, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 1 )
+region = Rect2( 160, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=23]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "fall",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "run",
+"speed": 16.0
+}, {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"loop": true,
+"name": "walk",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 21 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 22 ) ],
+"loop": true,
+"name": "dash",
+"speed": 5.0
+} ]
+
+[node name="player" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="animations" type="AnimatedSprite" parent="."]
+frames = SubResource( 23 )
+animation = "idle"
+playing = true
+
+[node name="state_manager" parent="." instance=ExtResource( 3 )]
+starting_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="state_manager"]
+script = ExtResource( 4 )
+animation_name = "idle"
+jump_node = NodePath("../jump")
+fall_node = NodePath("../fall")
+walk_node = NodePath("../walk")
+run_node = NodePath("../run")
+dash_node = NodePath("../dash")
+
+[node name="walk" type="Node" parent="state_manager"]
+script = ExtResource( 8 )
+animation_name = "walk"
+move_speed = 40.0
+jump_node = NodePath("../jump")
+fall_node = NodePath("../fall")
+dash_node = NodePath("../dash")
+idle_node = NodePath("../idle")
+walk_node = NodePath(".")
+run_node = NodePath("../run")
+
+[node name="run" type="Node" parent="state_manager"]
+script = ExtResource( 6 )
+animation_name = "run"
+move_speed = 75.0
+jump_node = NodePath("../jump")
+fall_node = NodePath("../fall")
+dash_node = NodePath("../dash")
+idle_node = NodePath("../idle")
+walk_node = NodePath("../walk")
+run_node = NodePath(".")
+
+[node name="dash" type="Node" parent="state_manager"]
+script = ExtResource( 9 )
+animation_name = "dash"
+move_speed = 85.0
+jump_node = NodePath("../jump")
+fall_node = NodePath("../fall")
+dash_node = NodePath(".")
+idle_node = NodePath("../idle")
+walk_node = NodePath("../walk")
+run_node = NodePath("../run")
+
+[node name="fall" type="Node" parent="state_manager"]
+script = ExtResource( 7 )
+animation_name = "fall"
+run_node = NodePath("../run")
+walk_node = NodePath("../walk")
+idle_node = NodePath("../idle")
+
+[node name="jump" type="Node" parent="state_manager"]
+script = ExtResource( 5 )
+animation_name = "jump"
+fall_node = NodePath("../fall")
+run_node = NodePath("../run")
+walk_node = NodePath("../walk")
+idle_node = NodePath("../idle")
+
+[editable path="state_manager"]
