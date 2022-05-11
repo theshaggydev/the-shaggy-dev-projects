@@ -1,0 +1,183 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sample_scene.gd" type="Script" id=1]
+
+[node name="sample_scene" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="monitor_size" type="Label" parent="."]
+margin_left = 584.0
+margin_top = 8.0
+margin_right = 695.0
+margin_bottom = 22.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Monitor Size: 0x0"
+align = 1
+
+[node name="display_container" type="VBoxContainer" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 304.0
+margin_bottom = 712.0
+size_flags_horizontal = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="display_container"]
+margin_right = 296.0
+margin_bottom = 14.0
+text = "Display settings"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fullscreen_toggle" type="CheckButton" parent="display_container"]
+margin_top = 18.0
+margin_right = 296.0
+margin_bottom = 58.0
+text = "Fullscreen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vysnc_toggle" type="CheckButton" parent="display_container"]
+margin_top = 62.0
+margin_right = 296.0
+margin_bottom = 102.0
+text = "Vsync"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="window_size_label" type="Label" parent="display_container"]
+margin_top = 106.0
+margin_right = 296.0
+margin_bottom = 120.0
+text = "Window size (doesn't affect fullscreen)"
+
+[node name="window_size_container" type="HBoxContainer" parent="display_container"]
+margin_top = 124.0
+margin_right = 296.0
+margin_bottom = 148.0
+
+[node name="width_spinbox" type="SpinBox" parent="display_container/window_size_container"]
+margin_right = 120.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 120, 0 )
+min_value = 200.0
+max_value = 1920.0
+value = 1280.0
+prefix = "Width:"
+
+[node name="height_spinbox" type="SpinBox" parent="display_container/window_size_container"]
+margin_left = 124.0
+margin_right = 244.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 120, 0 )
+min_value = 200.0
+max_value = 1080.0
+value = 720.0
+prefix = "Height:"
+
+[node name="apply_button" type="Button" parent="display_container/window_size_container"]
+margin_left = 248.0
+margin_right = 296.0
+margin_bottom = 24.0
+text = "Apply"
+
+[node name="window_position_label" type="Label" parent="display_container"]
+margin_top = 152.0
+margin_right = 296.0
+margin_bottom = 166.0
+text = "Window position"
+
+[node name="window_position_container" type="HBoxContainer" parent="display_container"]
+margin_top = 170.0
+margin_right = 296.0
+margin_bottom = 194.0
+
+[node name="x_spinbox" type="SpinBox" parent="display_container/window_position_container"]
+margin_right = 120.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 120, 0 )
+max_value = 2000.0
+prefix = "X:"
+
+[node name="y_spinbox" type="SpinBox" parent="display_container/window_position_container"]
+margin_left = 124.0
+margin_right = 244.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 120, 0 )
+max_value = 2000.0
+prefix = "Y:"
+
+[node name="apply_button" type="Button" parent="display_container/window_position_container"]
+margin_left = 248.0
+margin_right = 296.0
+margin_bottom = 24.0
+text = "Apply"
+
+[node name="center_window_button" type="Button" parent="display_container"]
+margin_top = 198.0
+margin_right = 296.0
+margin_bottom = 218.0
+text = "Center window"
+
+[node name="system_information" type="VBoxContainer" parent="."]
+margin_left = 972.0
+margin_top = 8.0
+margin_right = 1272.0
+margin_bottom = 712.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="clipboard_contents" type="Label" parent="system_information"]
+margin_right = 300.0
+margin_bottom = 14.0
+text = "- Clipboard Contents -"
+align = 1
+
+[node name="clipboard_button" type="Button" parent="system_information"]
+margin_top = 18.0
+margin_right = 300.0
+margin_bottom = 38.0
+text = "Paste clipboard"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="clipboard_source" type="LineEdit" parent="system_information"]
+margin_top = 42.0
+margin_right = 300.0
+margin_bottom = 66.0
+placeholder_text = "Type to copy to clipboard"
+
+[node name="copy_clipboard_button" type="Button" parent="system_information"]
+margin_top = 70.0
+margin_right = 300.0
+margin_bottom = 90.0
+text = "Copy to clipboard"
+
+[connection signal="toggled" from="display_container/fullscreen_toggle" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="display_container/vysnc_toggle" to="." method="_on_vysnc_toggled"]
+[connection signal="pressed" from="display_container/window_size_container/apply_button" to="." method="_on_apply_window_size"]
+[connection signal="pressed" from="display_container/window_position_container/apply_button" to="." method="_on_apply_window_position"]
+[connection signal="pressed" from="display_container/center_window_button" to="." method="_on_center_window_pressed"]
+[connection signal="pressed" from="system_information/clipboard_button" to="." method="_on_clipboard_button_pressed"]
+[connection signal="pressed" from="system_information/copy_clipboard_button" to="." method="_on_copy_clipboard_pressed"]
