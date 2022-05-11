@@ -11,7 +11,7 @@ onready var clipboard_contents = $system_information/clipboard_contents
 onready var clipboard_source = $system_information/clipboard_source
 
 func _ready() -> void:
-	monitor_size_label.text = 'Monitor size: %s' % str(OS.get_screen_size())
+	monitor_size_label.text = 'Monitor size: %s\n(May be off on monitors with scaling)' % str(OS.get_screen_size())
 
 func _on_fullscreen_toggled(button_pressed: bool) -> void:
 	OS.window_fullscreen = button_pressed
