@@ -145,7 +145,7 @@ margin_right = 405.0
 margin_bottom = 276.0
 text = "Center window"
 
-[node name="system_information" type="VBoxContainer" parent="."]
+[node name="clipboard" type="VBoxContainer" parent="."]
 margin_left = 964.0
 margin_top = 16.0
 margin_right = 1264.0
@@ -156,18 +156,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="clipboard_contents" type="Label" parent="system_information"]
+[node name="clipboard_contents" type="Label" parent="clipboard"]
 margin_right = 300.0
 margin_bottom = 18.0
 text = "Clipboard Contents"
 align = 1
 
-[node name="separator" type="HSeparator" parent="system_information"]
+[node name="separator" type="HSeparator" parent="clipboard"]
 margin_top = 26.0
 margin_right = 300.0
 margin_bottom = 30.0
 
-[node name="clipboard_button" type="Button" parent="system_information"]
+[node name="clipboard_button" type="Button" parent="clipboard"]
 margin_top = 38.0
 margin_right = 300.0
 margin_bottom = 64.0
@@ -176,23 +176,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="clipboard_source" type="LineEdit" parent="system_information"]
+[node name="clipboard_source" type="LineEdit" parent="clipboard"]
 margin_top = 72.0
 margin_right = 300.0
 margin_bottom = 98.0
 placeholder_text = "Type contents to copy"
 placeholder_alpha = 0.789
 
-[node name="copy_clipboard_button" type="Button" parent="system_information"]
+[node name="copy_clipboard_button" type="Button" parent="clipboard"]
 margin_top = 106.0
 margin_right = 300.0
 margin_bottom = 132.0
 text = "Copy to clipboard"
+
+[node name="datetime" type="Label" parent="."]
+margin_left = 1184.0
+margin_top = 686.0
+margin_right = 1264.0
+margin_bottom = 704.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Datetime"
 
 [connection signal="toggled" from="display_container/fullscreen_toggle" to="." method="_on_fullscreen_toggled"]
 [connection signal="toggled" from="display_container/vysnc_toggle" to="." method="_on_vysnc_toggled"]
 [connection signal="pressed" from="display_container/window_size_container/apply_button" to="." method="_on_apply_window_size"]
 [connection signal="pressed" from="display_container/window_position_container/apply_button" to="." method="_on_apply_window_position"]
 [connection signal="pressed" from="display_container/center_window_button" to="." method="_on_center_window_pressed"]
-[connection signal="pressed" from="system_information/clipboard_button" to="." method="_on_clipboard_button_pressed"]
-[connection signal="pressed" from="system_information/copy_clipboard_button" to="." method="_on_copy_clipboard_pressed"]
+[connection signal="pressed" from="clipboard/clipboard_button" to="." method="_on_clipboard_button_pressed"]
+[connection signal="pressed" from="clipboard/copy_clipboard_button" to="." method="_on_copy_clipboard_pressed"]
