@@ -1,0 +1,37 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+[application]
+
+config/name="scene-transitions"
+run/main_scene="res://src/scenes/main_menu.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+SceneTransition="*res://src/scenes/scene_transition.tscn"
+
+[display]
+
+window/size/width=640
+window/size/height=360
+window/size/test_width=1280
+window/size/test_height=720
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_clear_color=Color( 0.760784, 0.898039, 0.827451, 1 )
+environment/default_environment="res://default_env.tres"
