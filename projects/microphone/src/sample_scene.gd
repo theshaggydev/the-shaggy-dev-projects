@@ -11,7 +11,7 @@ var record_effect: AudioEffectRecord
 var recording: AudioStreamSample
 
 func _ready() -> void:
-	record_bus_index = AudioServer.get_bus_index('RecordOutput')
+	record_bus_index = AudioServer.get_bus_index('Record')
 	# Only one effect on the bus, so can just assume index 0 for record effect
 	record_effect = AudioServer.get_bus_effect(record_bus_index, 0)
 	update_button_states()
