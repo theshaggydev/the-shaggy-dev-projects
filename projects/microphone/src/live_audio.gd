@@ -45,11 +45,7 @@ func update_samples_frequency() -> void:
 		while frequency_samples[frequency].size() > samples_spinbox.value:
 			frequency_samples[frequency].pop_back()
 
-		bar.get_node('bar').modulate = Color(
-			0,
-			average_array(frequency_samples[frequency]),
-			average_array(frequency_samples[frequency])
-		)
+		bar.get_node('bar').modulate = Color('#3D312E').linear_interpolate(Color('#F0EBDA'), average_array(frequency_samples[frequency]))
 
 		prev_frequency = frequency
 
