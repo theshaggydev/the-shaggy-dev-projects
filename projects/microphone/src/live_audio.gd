@@ -1,7 +1,6 @@
 extends VBoxContainer
 
 onready var samples_spinbox = $controls/samples_control/samples_spinbox
-onready var amp_spinbox = $controls/amplification_control/amp_spinbox
 onready var volume_bar = $monitors/volume_monitor/volume_bar
 onready var volume_value = $monitors/volume_monitor/volume_value
 onready var bars = $monitors/frequency_monitor/bars
@@ -39,7 +38,7 @@ func update_samples_frequency() -> void:
 		).length()
 
 		# Boost the signal and normalize it
-		var energy = clamp((MIN_DB + linear2db(magnitude))/MIN_DB * amp_spinbox.value, 0, 1)
+		var energy = clamp((MIN_DB + linear2db(magnitude))/MIN_DB, 0, 1)
 		frequency_samples[frequency].push_front(energy)
 
 		while frequency_samples[frequency].size() > samples_spinbox.value:
@@ -51,8 +50,6 @@ func update_samples_frequency() -> void:
 
 func update_samples_strength() -> void:
 	var sample = db2linear(AudioServer.get_bus_peak_volume_left_db(record_live_index, 0))
-	# Amplify the signal if it's too weak
-	sample = clamp(sample * amp_spinbox.value, 0, 1)
 	volume_samples.push_front(sample)
 
 	# Use a while loop that way the user can adjust the number of samples at runtime

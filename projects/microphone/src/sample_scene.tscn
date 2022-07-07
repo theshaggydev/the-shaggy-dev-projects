@@ -367,3 +367,4 @@ value = 1.0
 [connection signal="pressed" from="content/ui/recording_controls/record_button" to="content" method="_on_record_button_pressed"]
 [connection signal="pressed" from="content/ui/recording_controls/play_button" to="content" method="_on_play_button_pressed"]
 [connection signal="pressed" from="content/ui/recording_controls/save_button" to="content" method="_on_save_button_pressed"]
+[connection signal="value_changed" from="content/ui/live_audio/controls/amplification_control/amp_spinbox" to="content" method="_on_amp_spinbox_value_changed"]

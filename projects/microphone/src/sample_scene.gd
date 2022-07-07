@@ -5,6 +5,7 @@ onready var recording_player = $recording_player
 onready var save_edit = $ui/recording_controls/save_name
 onready var play_button = $ui/recording_controls/play_button
 onready var save_button = $ui/recording_controls/save_button
+onready var mic_input = $mic_input
 
 var record_bus_index: int
 var record_effect: AudioEffectRecord
@@ -50,3 +51,6 @@ func stop_recording() -> void:
 func update_button_states() -> void:
 	play_button.disabled = !recording
 	save_button.disabled = !recording
+
+func _on_amp_spinbox_value_changed(value: float) -> void:
+	mic_input.volume_db = linear2db(value)
