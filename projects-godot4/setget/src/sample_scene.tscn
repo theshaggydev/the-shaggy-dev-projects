@@ -1,0 +1,114 @@
+[gd_scene load_steps=6 format=3 uid="uid://cru6qfds2hsjw"]
+
+[ext_resource type="Theme" uid="uid://cbqbn6ue4ssnh" path="res://src/ui/theme.tres" id="1_ef8nd"]
+[ext_resource type="Script" path="res://src/sample_scene.gd" id="1_s7hm7"]
+[ext_resource type="FontFile" uid="uid://5j1pdj5xd7a0" path="res://src/ui/font/Kenney Future.ttf" id="3_4krd6"]
+[ext_resource type="Texture2D" uid="uid://dcpec1mi63i42" path="res://src/ui/background.png" id="3_8s2vu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_86w6y"]
+font = ExtResource("3_4krd6")
+font_size = 64
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.54902)
+shadow_offset = Vector2(4, 4)
+
+[node name="sample_scene" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("1_ef8nd")
+script = ExtResource("1_s7hm7")
+
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_8s2vu")
+
+[node name="contents" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+alignment = 1
+
+[node name="title" type="Label" parent="contents"]
+layout_mode = 2
+offset_top = 321.0
+offset_right = 1920.0
+offset_bottom = 396.0
+text = "Setters and Getters"
+label_settings = SubResource("LabelSettings_86w6y")
+horizontal_alignment = 1
+
+[node name="setter" type="HBoxContainer" parent="contents"]
+layout_mode = 2
+offset_left = 625.0
+offset_top = 428.0
+offset_right = 1295.0
+offset_bottom = 472.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="label" type="Label" parent="contents/setter"]
+layout_mode = 2
+offset_top = 2.0
+offset_right = 262.0
+offset_bottom = 41.0
+text = "Type value:"
+
+[node name="input" type="LineEdit" parent="contents/setter"]
+custom_minimum_size = Vector2i(400, 0)
+layout_mode = 2
+offset_left = 270.0
+offset_right = 670.0
+offset_bottom = 44.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="update_label" type="Label" parent="contents"]
+layout_mode = 2
+offset_top = 504.0
+offset_right = 1920.0
+offset_bottom = 540.0
+theme_override_colors/font_color = Color(1, 0.886275, 0, 1)
+horizontal_alignment = 1
+
+[node name="getter" type="VBoxContainer" parent="contents"]
+layout_mode = 2
+offset_top = 572.0
+offset_right = 1920.0
+offset_bottom = 758.0
+
+[node name="read" type="Button" parent="contents/getter"]
+layout_mode = 2
+offset_left = 830.0
+offset_right = 1089.0
+offset_bottom = 44.0
+size_flags_horizontal = 4
+text = "Read value"
+
+[node name="value" type="Label" parent="contents/getter"]
+layout_mode = 2
+offset_top = 76.0
+offset_right = 1920.0
+offset_bottom = 115.0
+text = "Value: \"\""
+horizontal_alignment = 1
+
+[node name="count" type="Label" parent="contents/getter"]
+layout_mode = 2
+offset_top = 147.0
+offset_right = 1920.0
+offset_bottom = 186.0
+text = "Reads: 0"
+horizontal_alignment = 1
+
+[connection signal="text_changed" from="contents/setter/input" to="." method="_on_input_text_changed"]
+[connection signal="pressed" from="contents/getter/read" to="." method="_on_read_pressed"]

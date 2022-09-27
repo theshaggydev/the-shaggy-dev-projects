@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cbqbn6ue4ssnh"]
+
+[ext_resource type="FontFile" uid="uid://5j1pdj5xd7a0" path="res://src/ui/font/Kenney Future.ttf" id="1_yx3op"]
+
+[resource]
+default_font = ExtResource("1_yx3op")
+default_font_size = 32
+HBoxContainer/constants/separation = 8
+VBoxContainer/constants/separation = 32
