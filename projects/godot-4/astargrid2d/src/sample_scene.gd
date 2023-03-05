@@ -21,7 +21,8 @@ func _on_layout_updated() -> void:
 	find_path()
 
 func _on_options_updated(heuristic: int, diagonal: int, jump: bool) -> void:
-	astar_grid.default_heuristic = heuristic
+	astar_grid.default_compute_heuristic = heuristic
+	astar_grid.default_estimate_heuristic = heuristic
 	astar_grid.diagonal_mode = diagonal
 	astar_grid.jumping_enabled = jump
 	
