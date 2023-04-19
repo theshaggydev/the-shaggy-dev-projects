@@ -2,18 +2,19 @@ extends TileMap
 
 signal layout_updated
 
-var drag_place := false
+var is_placing_wall := false
 var is_dragging := false
 var last_mouse_cell: Vector2i
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		drag_place = event.button_index == MOUSE_BUTTON_MASK_LEFT
+		# LMB to place walls, RMB to remove
+		is_placing_wall = event.button_index == MOUSE_BUTTON_MASK_LEFT
 		is_dragging = event.pressed
 		if is_dragging:
 			last_mouse_cell = local_to_map(get_local_mouse_position())
 			set_cell_to_drag_value(last_mouse_cell)
-			emit_signal('layout_updated')
+			layout_updated.emit()
 		return
 	
 	if event is InputEventMouseMotion and is_dragging:
@@ -24,12 +25,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			set_cell_to_drag_value(point)
 
 		if line.size() > 0:
-			emit_signal('layout_updated')
+			layout_updated.emit()
 		last_mouse_cell = current_cell
 
 func set_cell_to_drag_value(cell: Vector2i) -> void:
 	var value = 0
-	if !drag_place:
+	if !is_placing_wall:
 		value = 1
 	set_cell(0, cell, 0, Vector2i(value, 0))
 
