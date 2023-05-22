@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/sample_scene/sample_scene.gd" id="1_pg4sx"]
 [ext_resource type="Theme" uid="uid://dya6ykwne113c" path="res://theme.tres" id="1_q63v4"]
 [ext_resource type="AudioStream" uid="uid://bc1fdfw5t40wr" path="res://audio/song.ogg" id="2_ca52f"]
-[ext_resource type="PackedScene" uid="uid://diqxo8trm8pk4" path="res://src/volume_slider/volume_slider.tscn" id="2_e5wc3"]
+[ext_resource type="PackedScene" uid="uid://dr0ihu51kwt7q" path="res://src/volume_slider/volume_slider.tscn" id="2_e5wc3"]
 [ext_resource type="AudioStream" uid="uid://boqwruowdw6i3" path="res://audio/switch_on.ogg" id="3_s2741"]
 
 [node name="sample_scene" type="Control"]
@@ -45,7 +45,7 @@ layout_mode = 2
 text = "Master Volume"
 horizontal_alignment = 1
 
-[node name="master_slider" parent="contents/options/contents" instance=ExtResource("2_e5wc3")]
+[node name="master" parent="contents/options/contents" instance=ExtResource("2_e5wc3")]
 layout_mode = 2
 bus_name = "Master"
 
@@ -54,7 +54,7 @@ layout_mode = 2
 text = "Music Volume"
 horizontal_alignment = 1
 
-[node name="music_slider" parent="contents/options/contents" instance=ExtResource("2_e5wc3")]
+[node name="music" parent="contents/options/contents" instance=ExtResource("2_e5wc3")]
 layout_mode = 2
 bus_name = "music"
 
@@ -63,7 +63,7 @@ layout_mode = 2
 text = "SFX Volume"
 horizontal_alignment = 1
 
-[node name="sfx_slider" parent="contents/options/contents" instance=ExtResource("2_e5wc3")]
+[node name="sfx" parent="contents/options/contents" instance=ExtResource("2_e5wc3")]
 layout_mode = 2
 bus_name = "sfx"
 
