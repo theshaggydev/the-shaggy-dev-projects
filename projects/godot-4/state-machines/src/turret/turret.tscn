@@ -1,0 +1,154 @@
+[gd_scene load_steps=21 format=3 uid="uid://dx6uv2jhm1dqr"]
+
+[ext_resource type="Script" path="res://src/turret/turret.gd" id="1_kipod"]
+[ext_resource type="Texture2D" uid="uid://whjfeg53biq5" path="res://src/turret/art/fire.png" id="2_ep4ud"]
+[ext_resource type="Texture2D" uid="uid://divyfmelk2xi4" path="res://src/turret/art/scanning.png" id="2_jtkro"]
+[ext_resource type="Texture2D" uid="uid://didc38huxchw8" path="res://src/turret/art/recharging.png" id="3_56g40"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7wo4"]
+atlas = ExtResource("2_ep4ud")
+region = Rect2(0, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1bk2"]
+atlas = ExtResource("2_ep4ud")
+region = Rect2(256, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol822"]
+atlas = ExtResource("2_ep4ud")
+region = Rect2(512, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucpe7"]
+atlas = ExtResource("2_ep4ud")
+region = Rect2(768, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjqi5"]
+atlas = ExtResource("2_ep4ud")
+region = Rect2(1024, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxb0k"]
+atlas = ExtResource("3_56g40")
+region = Rect2(0, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx25v"]
+atlas = ExtResource("3_56g40")
+region = Rect2(256, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljxh2"]
+atlas = ExtResource("3_56g40")
+region = Rect2(512, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmm83"]
+atlas = ExtResource("3_56g40")
+region = Rect2(768, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v88py"]
+atlas = ExtResource("3_56g40")
+region = Rect2(1024, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocnnx"]
+atlas = ExtResource("3_56g40")
+region = Rect2(1280, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2kfw"]
+atlas = ExtResource("3_56g40")
+region = Rect2(1536, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfwl5"]
+atlas = ExtResource("3_56g40")
+region = Rect2(1792, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_waigu"]
+atlas = ExtResource("3_56g40")
+region = Rect2(2048, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjmxn"]
+atlas = ExtResource("3_56g40")
+region = Rect2(2304, 0, 256, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bu31a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7wo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1bk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ol822")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucpe7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjqi5")
+}],
+"loop": false,
+"name": &"firing",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxb0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx25v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljxh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmm83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v88py")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocnnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2kfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfwl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_waigu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjmxn")
+}],
+"loop": false,
+"name": &"recharging",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jtkro")
+}],
+"loop": true,
+"name": &"scanning",
+"speed": 5.0
+}]
+
+[node name="turret" type="Node2D"]
+script = ExtResource("1_kipod")
+
+[node name="view_line" type="Line2D" parent="."]
+position = Vector2(0, -2)
+points = PackedVector2Array(0, -37, -994, -38)
+width = 2.0
+default_color = Color(1, 0, 0.301961, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="animations" type="AnimatedSprite2D" parent="."]
+position = Vector2(-24, -24)
+sprite_frames = SubResource("SpriteFrames_bu31a")
+animation = &"scanning"
+
+[node name="raycast" type="RayCast2D" parent="."]
+position = Vector2(0, -39)
+target_position = Vector2(-1000, 0)

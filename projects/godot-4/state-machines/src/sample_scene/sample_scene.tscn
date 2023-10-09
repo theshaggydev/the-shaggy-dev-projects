@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://enlgjks5pxns"]
+
+[ext_resource type="Texture2D" uid="uid://dtlv8yjg8j67e" path="res://src/sample_scene/background.png" id="1_unc4p"]
+[ext_resource type="PackedScene" uid="uid://dx6uv2jhm1dqr" path="res://src/turret/turret.tscn" id="1_yy5ut"]
+[ext_resource type="PackedScene" uid="uid://di4b3fet5cvsw" path="res://src/player/player.tscn" id="2_cat83"]
+[ext_resource type="Texture2D" uid="uid://c4otftt0ft5ba" path="res://src/sample_scene/tile.png" id="2_k71ab"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qdgb4"]
+texture = ExtResource("2_k71ab")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_m20kh"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_qdgb4")
+
+[node name="sample_scene" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_unc4p")
+
+[node name="tilemap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_m20kh")
+format = 2
+layer_0/tile_data = PackedInt32Array(1048605, 0, 0, 29, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 65565, 0, 0, 131101, 0, 0, 196637, 0, 0, 262173, 0, 0, 327709, 0, 0, 393245, 0, 0, 458781, 0, 0, 524317, 0, 0, 589853, 0, 0, 655389, 0, 0, 720925, 0, 0, 786461, 0, 0, 851997, 0, 0, 917533, 0, 0, 983069, 0, 0, 1048604, 0, 0, 1048603, 0, 0, 1048602, 0, 0, 1048601, 0, 0, 1048600, 0, 0, 1048599, 0, 0, 1048598, 0, 0, 1048597, 0, 0, 1048596, 0, 0, 1048595, 0, 0, 1048594, 0, 0, 1048593, 0, 0, 1048592, 0, 0, 1048591, 0, 0, 1048590, 0, 0, 1048589, 0, 0, 1048588, 0, 0, 1048587, 0, 0, 1048586, 0, 0, 1048585, 0, 0, 1048584, 0, 0, 1048583, 0, 0, 1048582, 0, 0, 1048581, 0, 0, 1048580, 0, 0, 1048579, 0, 0, 1048578, 0, 0, 1048577, 0, 0, 1048576, 0, 0, 983040, 0, 0, 917504, 0, 0, 851968, 0, 0, 786432, 0, 0, 720896, 0, 0, 655360, 0, 0, 589824, 0, 0, 524288, 0, 0, 196608, 0, 0, 131072, 0, 0, 65536, 0, 0, 262144, 0, 0, 327680, 0, 0, 393216, 0, 0, 458752, 0, 0, 983068, 0, 0, 983067, 0, 0, 786459, 0, 0, 786460, 0, 0, 851996, 0, 0, 917532, 0, 0, 917531, 0, 0, 851995, 0, 0, 917507, 0, 0, 851970, 0, 0, 851969, 0, 0, 917505, 0, 0, 983041, 0, 0, 983042, 0, 0, 983043, 0, 0, 917506, 0, 0, 786433, 0, 0, 786434, 0, 0, 65537, 0, 0, 65564, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720912, 0, 0, 720913, 0, 0, 720914, 0, 0, 720915, 0, 0, 720911, 0, 0, 720907, 0, 0)
+
+[node name="turret" parent="." instance=ExtResource("1_yy5ut")]
+position = Vector2(1719, 728)
+
+[node name="player" parent="." instance=ExtResource("2_cat83")]
+position = Vector2(872, 960)
