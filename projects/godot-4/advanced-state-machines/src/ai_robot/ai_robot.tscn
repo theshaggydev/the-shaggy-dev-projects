@@ -1,0 +1,193 @@
+[gd_scene load_steps=28 format=3 uid="uid://dgkipo7pyqcjq"]
+
+[ext_resource type="Script" path="res://src/ai_robot/ai_robot.gd" id="1_pnwa3"]
+[ext_resource type="Texture2D" uid="uid://cnydpotjlqx8c" path="res://src/ai_robot/art/fall.png" id="2_nhxgq"]
+[ext_resource type="Texture2D" uid="uid://d21ya1oay5470" path="res://src/ai_robot/art/idle.png" id="3_jb44g"]
+[ext_resource type="Texture2D" uid="uid://bjky73lmdnnhj" path="res://src/ai_robot/art/move.png" id="4_cuv23"]
+[ext_resource type="PackedScene" uid="uid://bsgtr5x44hma2" path="res://src/state_machine/state_machine.tscn" id="6_dh2x4"]
+[ext_resource type="Script" path="res://src/state_machine/states/idle.gd" id="7_x20h1"]
+[ext_resource type="Script" path="res://src/state_machine/states/jump.gd" id="8_6i1nr"]
+[ext_resource type="Script" path="res://src/state_machine/states/fall.gd" id="9_q8ykr"]
+[ext_resource type="Script" path="res://src/state_machine/states/move.gd" id="10_35rrk"]
+[ext_resource type="Script" path="res://src/ai_robot/robot_move_component.gd" id="11_lli2d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pinel"]
+atlas = ExtResource("2_nhxgq")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knyo7"]
+atlas = ExtResource("2_nhxgq")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj7d5"]
+atlas = ExtResource("3_jb44g")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2bvi"]
+atlas = ExtResource("3_jb44g")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_str1x"]
+atlas = ExtResource("3_jb44g")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kybu"]
+atlas = ExtResource("3_jb44g")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubu6u"]
+atlas = ExtResource("3_jb44g")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yui7t"]
+atlas = ExtResource("3_jb44g")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rludh"]
+atlas = ExtResource("3_jb44g")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6e3v4"]
+atlas = ExtResource("3_jb44g")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g47s0"]
+atlas = ExtResource("2_nhxgq")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ke5j"]
+atlas = ExtResource("4_cuv23")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eu887"]
+atlas = ExtResource("4_cuv23")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rpu6"]
+atlas = ExtResource("4_cuv23")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylvom"]
+atlas = ExtResource("4_cuv23")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wbqi1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pinel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knyo7")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hj7d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2bvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_str1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kybu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubu6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yui7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rludh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6e3v4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g47s0")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ke5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eu887")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rpu6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylvom")
+}],
+"loop": true,
+"name": &"move",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5sto"]
+size = Vector2(17, 83)
+
+[node name="ai_robot" type="CharacterBody2D"]
+script = ExtResource("1_pnwa3")
+
+[node name="animations" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_wbqi1")
+animation = &"idle"
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 3.5)
+shape = SubResource("RectangleShape2D_p5sto")
+
+[node name="state_machine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("6_dh2x4")]
+starting_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "jump_state", "move_state")]
+script = ExtResource("7_x20h1")
+fall_state = NodePath("../fall")
+jump_state = NodePath("../jump")
+move_state = NodePath("../move")
+animation_name = "idle"
+move_speed = 350.0
+
+[node name="jump" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "move_state")]
+script = ExtResource("8_6i1nr")
+fall_state = NodePath("../fall")
+idle_state = NodePath("../idle")
+move_state = NodePath("../move")
+animation_name = "jump"
+move_speed = 350.0
+
+[node name="fall" type="Node" parent="state_machine" node_paths=PackedStringArray("idle_state", "move_state")]
+script = ExtResource("9_q8ykr")
+idle_state = NodePath("../idle")
+move_state = NodePath("../move")
+animation_name = "fall"
+move_speed = 350.0
+
+[node name="move" type="Node" parent="state_machine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state")]
+script = ExtResource("10_35rrk")
+fall_state = NodePath("../fall")
+idle_state = NodePath("../idle")
+jump_state = NodePath("../jump")
+animation_name = "move"
+move_speed = 350.0
+
+[node name="robot_move_component" type="Node" parent="." node_paths=PackedStringArray("parent")]
+script = ExtResource("11_lli2d")
+parent = NodePath("..")
